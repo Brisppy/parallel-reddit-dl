@@ -84,7 +84,12 @@ fi
 
 ct=0
 while [[ $ct -lt $nthread ]]; do
-    process="$DIRECTORY/bulk-processor.sh $DIRECTORY $DOWNLOADEDPOSTS $BDFRSCRIPT $USERLISTTMP/userlist.0$ct"
+    if [ $ct -lt 10 ]; then
+        USERLISTPATH=$USERLISTTMP/userlist.0$ct
+    else
+        USERLISTPATH=$USERLISTTMP/userlist.$ct
+    fi
+    process="$DIRECTORY/bulk-processor.sh $DIRECTORY $DOWNLOADEDPOSTS $BDFRSCRIPT $USERLISTPATH"
     exec_cmd="time $process $ct $nthread"
     tmux send-keys -t $sess_name.$ct "$exec_cmd" Enter
     (( ct++ ))
