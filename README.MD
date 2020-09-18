@@ -39,7 +39,7 @@ Copy the credentials from config.json in your HOME directory, and insert them in
 Modify the variables in bulk-downloader.sh to match your environment.
 | Variable | Function |
 |-------|------|
-|```DIRECTORY```|Directory you wish to download the user files to, do not end with a slash (/). (e.g /mnt/redditdl)
+|```DIRECTORY```|Directory you wish to download the user files to, do NOT end with a slash (/). (e.g /mnt/redditdl)
 |```BDFRSCRIPT```|Location of the script.py file within bulk-downloader-for-reddit, make sure this is the script.py file itself. You only need to edit this if you did not move bulk-downloader-for-reddit to /opt/. (e.g /opt/bulk-downloader-for-reddit/script.py)
 |```USERLIST```|Location of the userlist which is sent to BDFR, this should point to the file itself. (e.g /mnt/redditdl/users.txt)
 |```THREADCOUNT```|Number of parallel tmux panes to open.
