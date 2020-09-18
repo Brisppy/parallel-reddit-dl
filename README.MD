@@ -3,10 +3,9 @@ This script can be used to download a large number of user profiles using parall
 To add users, simply add their reddit username to a file with each separate user on a new line. Pass this file to parallel-reddit-dl as the USERLIST variable.
 
 # Requirements
-```
-Python 3
-ffmpeg
-```
+> Python 3
+
+> ffmpeg
 
 # Installation
 Download parallel-reddit-dl.
