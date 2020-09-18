@@ -1,5 +1,6 @@
 # parallel-reddit-dl
-This script can be used to download a large number of user profiles using parallel tmux panes to speed up the process.
+This script can be used to download a large number of user profiles using parallel tmux panes to speed up the process. The purpose of this script is to keep a running archive of a user's profile through scheduling this script to run frequently, grabbing any new images or videos.
+
 To add users, simply add their reddit username to a file with each separate user on a new line. Pass this file to parallel-reddit-dl as the USERLIST variable.
 
 # Requirements
@@ -49,7 +50,11 @@ Close the tmux session after all panes have completed.
 
 # Issues
 Currently, BDFR does not work for Imgur (Hopefully fixed in next BDFR release).
+BDFR may fail to download video files from certain domains, I have found that by re-running the script the files may be downloaded properly.
 Occasionally one of the BDFR panes will stop processing, simply move to the pane (CTRL+B, ARROW KEYS) and CTRL+C to move to the next user.
+
+# Notes
+The script can be modified to include self posts made by a user, simply remove "--skip self" from bulk-processor.sh (Line 15).
 
 # Credits
 Michelle L. Gill for their parallel tmux script.
