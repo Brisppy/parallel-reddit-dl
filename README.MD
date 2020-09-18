@@ -52,7 +52,7 @@ Close the tmux session after all panes have completed.
 * Currently, BDFR does not work for Imgur (Hopefully fixed in next BDFR release).
 * BDFR may fail to download video files from certain domains, I have found that by re-running the script the files may be downloaded properly.
 * Occasionally one of the BDFR panes will stop processing, simply move to the pane (CTRL+B, ARROW KEYS) and CTRL+C to move to the next user.
-* Very rarely, if two panes begin processing users in the exact same second, one may error out because the log files have already been created. More panes will increase this chance. This can be fixed, but is rare enough that I may just leave it be.
+* Very rarely, if two panes begin processing users in the exact same second, one may error out because the log files are created with the same name. More panes will increase this chance. This can be fixed, but is rare enough that I may just leave it be.
 
 # Notes
 The script can be modified to include self posts made by a user, simply remove "--skip self" from bulk-processor.sh (Line 15).
