@@ -2,9 +2,9 @@
 This script can be used to download a large number of user profiles using parallel tmux panes to speed up the process. The purpose of this script is to keep a running archive of a user's profile through scheduling this script to run frequently, grabbing any new images or videos.
 
 # How to use
-After installing, move (cd) to the parallel-reddit-dl directory and simply run bulk-download.sh
+After installing, move (cd) to the parallel-reddit-dl directory and simply run bulk-download.sh.
 
-To add users, simply add their reddit username to a file with each separate user on a new line (as shown below). Pass this file to parallel-reddit-dl as the USERLIST variable.
+To add users, simply add their reddit username to a file with each separate user on a new line (as shown below). Pass the file path to parallel-reddit-dl as the USERLIST variable in bulk-download.sh.
 ```
 spez
 Gallowboob
