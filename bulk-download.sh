@@ -4,10 +4,13 @@
 # https://gist.github.com/mlgill/ad2693f17aaa720ef777
 
 ### MODIFY THESE VALUES
+# Directory you wish to download the user files to, do NOT end with a slash (/).
 DIRECTORY=/mnt/redditdl
-# Either edit this, or move bulk-downloader-for-reddit to /opt/
+# Location of the script.py file within bulk-downloader-for-reddit, make sure this is the script.py file itself. You only need to edit this if you did not move bulk-downloader-for-reddit to /opt/.
 BDFRSCRIPT=/opt/bulk-downloader-for-reddit/script.py
+# Location of the userlist which is sent to BDFR, this should point to the file itself.
 USERLIST=/mnt/redditdl/users.txt
+# Number of parallel tmux panes to open.
 THREADCOUNT=8
 
 ### DO NOT MODIFY
@@ -15,13 +18,18 @@ THREADCOUNT=8
 DOWNLOADEDPOSTS=$DIRECTORY/downloaded_posts
 # Temporary userlists
 USERLISTTMP=$DIRECTORY/userlists
+RNDUSERLIST=$USERLISTTMP/rnduserlist
 
-# Check if USERLISTTMP exists
+# Check if USERLISTTMP exists, if so delete and remake it
 [ -d "$USERLISTTMP" ] && rm -drf $USERLISTTMP && sleep 5
 mkdir "$USERLISTTMP"
 
+# Randomize list order
+shuf $USERLIST > $RNDUSERLIST
 # Split the userfile into THREADCOUNT number of chunks
-split -a 2 -d -n r/$THREADCOUNT $USERLIST $USERLISTTMP/userlist.
+split -a 2 -d -n r/$THREADCOUNT $RNDUSERLIST $USERLISTTMP/userlist.
+# Remove the generated random userlist
+rm $RNDUSERLIST
 
 # Execute the parallel tmux sessions
 USERLISTS=$(find $USERLISTTMP -type f -printf "%f\n")
