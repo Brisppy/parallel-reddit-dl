@@ -1,0 +1,9 @@
+{
+    "credentials": {
+        "reddit_username": "YOUR_USERNAME_HERE",
+        "reddit": "YOUR_TOKEN_HERE"
+    },
+    "filename": "{DATE}_{TITLE}_{SUBREDDIT}_{POSTID}",
+    "folderpath": "{REDDITOR}",
+    "options": ""
+}
