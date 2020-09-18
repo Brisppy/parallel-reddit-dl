@@ -1,5 +1,10 @@
 # parallel-reddit-dl
 This script can be used to download a large number of user profiles using parallel tmux panes to speed up the process.
+To add users, simply add their reddit username to a file with each separate user on a new line. Pass this file to parallel-reddit-dl as the USERLIST variable.
+
+# Requirements
+Python 3
+ffmpeg
 
 # Installation
 Download parallel-reddit-dl.
@@ -15,7 +20,7 @@ mv ./bulk-downloader-for-reddit /opt/
 
 Run BDFR once to authenticate for Reddit.
 ```
-python3 ./bulk-downloader-for-reddit/script.py
+python3 /opt/bulk-downloader-for-reddit/script.py
 ```
 
 Copy the credentials from config.json in your HOME directory, and insert them into the provided config.json, which should now look like this:
