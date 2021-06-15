@@ -1,16 +1,19 @@
 #!/bin/bash
 DIRECTORY=$1
 DOWNLOADEDPOSTS=$2
-BDFRSCRIPT=$3
-USERLIST=$4
+USERLIST=$3
+LOGPATH=$4
 
-# Sleep to avoid errors with log files being created simultaneously.
 sleep $5
 
-# Iterate through provided userlist.
 while read USER; do
-    cd $DIRECTORY
-    echo Processing $USER
-    # Pass the user and other variables to BDFR to download.
-    python3 $BDFRSCRIPT --submitted --user $USER --directory $DIRECTORY --no-dupes --quit --skip self --downloaded-posts $DOWNLOADEDPOSTS
+    cd "$DIRECTORY"
+    echo Processing "$USER"
+    python3.9 -m bdfr download "$DIRECTORY" --submitted --user "$USER" --log "$LOGPATH" --file-scheme "{DATE}_{TITLE}_{SUBREDDIT}_{POSTID}" --folder-scheme "{REDDITOR}" --time-format "%Y-%m-%d_%H-%M" --exclude-id-file "$DOWNLOADEDPOSTS"
+    # We need to extract the IDs of downloaded files in order to skip posts we've successfully downloaded.
+    "$DIRECTORY/extract_successful_ids.sh" "$LOGPATH" "$LOGPATH.success"
+    # Remove the log file to keep it from making new ones with varying names.
+    rm "$LOGPATH"
+    sleep 5
+
 done <$USERLIST
