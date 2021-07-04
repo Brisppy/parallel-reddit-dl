@@ -19,18 +19,23 @@ kn0thing
 
 
 # Installation
-Download parallel-reddit-dl to /opt/.
+1. Download parallel-reddit-dl to /opt/.
 ```
 git clone https://github.com/Brisppy/parallel-reddit-dl /opt/
 ```
 
-Install bulk-downloader-for-reddit (BDFR).
+2. Install bulk-downloader-for-reddit (BDFR).
 ```
 python3 -m pip install bdfr
 ```
 
+3. Modify the default BDFR configuration file. Change `backup_log_count = 3` to `backup_log_count = 0`.
+```
+nano ~/.config/bdfr/default_config.cfg
+```
 
-Modify the variables in ```bulk-downloader.sh``` to match your environment.
+
+4. Modify the variables in ```bulk-downloader.sh``` to match your environment.
 | Variable | Function |
 |-------|------|
 |```DIRECTORY```|Directory you wish to download the user files to, do NOT end with a slash (/). (e.g /mnt/redditdl)
