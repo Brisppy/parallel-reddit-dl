@@ -36,6 +36,7 @@ nano ~/.config/bdfr/default_config.cfg
 
 
 4. Modify the variables in ```bulk-downloader.sh``` to match your environment.
+
 | Variable | Function |
 |-------|------|
 |```DIRECTORY```|Directory you wish to download the user files to, do NOT end with a slash (/). (e.g /mnt/redditdl)
