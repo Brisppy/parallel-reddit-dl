@@ -30,8 +30,9 @@ if [[ $exit -eq 0 ]]; then
     tmux kill-session -t "$sess_name"
 fi
 
-# Create log directory
+# Create log directory + config directory
 mkdir -p "$CURDIR/bdfr-logs"
+mkdir -p "$CURDIR/bdfr-config"
 
 # Update the downloaded-ids list
 for file in "$CURDIR"/bdfr-logs/log*.success; do
@@ -100,7 +101,7 @@ while [[ $ct -lt $nthread ]]; do
         USERLISTPATH="$USERLISTTMP/userlist.$ct"
         LOGPATH="$CURDIR/bdfr-logs/log$ct"
     fi
-    process="$CURDIR/bulk-processor.sh $DIRECTORY $DOWNLOADEDPOSTS $USERLISTPATH $LOGPATH"
+    process="$CURDIR/bulk-processor.sh $DIRECTORY $DOWNLOADEDPOSTS $USERLISTPATH $LOGPATH $CURDIR"
     end_cmd="exit"
     exec_cmd="time $process $ct $nthread && $end_cmd"
     tmux send-keys -t "$sess_name.$ct" "$exec_cmd" Enter
